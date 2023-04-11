@@ -1,0 +1,5 @@
+<h1>Welcome to learning section</h1>
+<% @learning.each do |t| %>
+  <%= t.name %>
+<% end %>
+<strong><%= link_to "Generate new record", new_tutorial_learning_path %></strong>

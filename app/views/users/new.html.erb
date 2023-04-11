@@ -1,0 +1,19 @@
+<h1>Create new user</h1>
+<%= form_with model: @user do |form| %>
+  <p><%= form.label :mobile_number %>
+  <%= form.text_field :mobile_number %></p>
+  <p><%= form.label :name %>
+  <%= form.text_field :name %></p>
+  <p><%= form.label :surname %>
+  <%= form.text_field :surname %></p>
+  <p><%= form.radio_button :gender, "male" %>
+  <%= form.label :gender_male, "male" %>
+  <%= form.radio_button :gender, "female" %>
+  <%= form.label :gender_female, "female" %>
+  </p>
+  <p>
+  <%= form.label :image %>
+    <%= form.file_field :image %>
+  </p>
+  <p><%= form.submit %></p>
+<% end %>

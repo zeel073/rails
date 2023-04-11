@@ -1,0 +1,20 @@
+<h3>Reviews which are private.</h3>
+<% @reviewprivate.each do |t| %>
+  <p><%= t.reviewer %></p>
+  <p><%= t.review %></p>
+  <hr>
+<% end %>
+
+<h3>Reviews which are public.</h3>
+<% @reviewpublic.each do |t| %>
+  <p><%= t.reviewer %></p>
+  <p><%= t.review %></p>
+  <hr>
+<% end %>
+
+<h3>Reviews which are archived.</h3>
+<% @reviewarchived.each do |t| %>
+  <p><%= t.reviewer %></p>
+  <p><%= t.review %></p>
+  <hr>
+<% end %>

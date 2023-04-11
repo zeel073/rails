@@ -1,0 +1,11 @@
+<% unless review.archived? %>
+<p>Reviewer:<%= review.reviewer %></p>
+  <p>Review:<%= review.review %></p>
+<!--  <br>-->
+  <p><%= link_to "delete review", [review.student, review], data: {
+    turbo_method: :delete,
+  turbo_confirm: "Sach me?"
+  } %></p>
+  <p><%= link_to "Edit review", edit_student_review_path(student_id: review.student_id , id: review.id) %></p>
+  <br>
+<% end %>

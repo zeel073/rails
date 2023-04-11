@@ -1,0 +1,49 @@
+<%= form_with model: @student do |form| %>
+  <div>
+    <%= form.label :rollNo %>
+    <%= form.text_field :rollNo %>
+    <% student.errors.full_messages_for(:rollNo).each do |message| %>
+      <div style="color: red">
+        <%= message %>
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    <% student.errors.full_messages_for(:name).each do |message| %>
+      <div style="color: red">
+        <%= message %>
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :remarks %>
+    <%= form.text_field :remarks %>
+    <% student.errors.full_messages_for(:remarks).each do |message| %>
+      <div style="color: red">
+        <%= message %>
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :status %>
+    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+  </div>
+  <br>
+  <div>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+    <% student.errors.full_messages_for(:email).each do |message| %>
+      <div style="color: red">
+        <%= message %>
+      </div>
+    <% end %>
+  </div>
+  <br>
+    <%= form.submit %>
+  </div>
+<% end %>

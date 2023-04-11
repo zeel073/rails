@@ -1,0 +1,14 @@
+<h1>welcome</h1>
+<% @user.each do |t| %>
+  <p><%= @counting %>
+    <%= link_to t.name, t %></p>
+  <%  @counting +=1 %>
+<!--  <br>-->
+<% end %>
+<br>
+<%= link_to "Create new record", new_user_path %>
+<br>
+<%#= image_tag event.image %>
+<p>
+  <%= helperyo(@user.first.name) %>
+</p>

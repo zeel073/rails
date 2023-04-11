@@ -1,0 +1,21 @@
+<h1>Record</h1>
+<p><%= @student.rollNo %></p>
+<p><%= @student.name %></p>
+<p><%= @student.remarks %></p>
+<p><%= @student.email %></p>
+<p><%= link_to "Edit this record", edit_student_path %></p>
+<p><%= link_to "Delete this record", students_path, data: {
+  turbo_method: :delete,
+  turbo_confirm: "Really???"
+} %></p>
+<%= link_to "Preview this record", preview_student_review_path(@student.id) %>
+<p><%= link_to "See all records", students_path %></p>
+<h2>Reviews</h2>
+
+<%= render @student.reviews %>
+<% @student.reviews.each do |review| %>
+  <% cache review.reviewer do %>
+    <%= review.reviewer %>
+  <% end %>
+<% end %>
+<%= render 'reviews/form' %>

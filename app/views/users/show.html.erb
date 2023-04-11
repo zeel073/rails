@@ -1,0 +1,25 @@
+<style>
+  .user-image{
+      height: 100px;
+  }
+</style>
+<p>Name: <%= @user.name %></p>
+<p>Surname: <%= @user.surname %></p>
+<p>Mobile_number: <%= @user.mobile_number %></p>
+<p>Gender: <%= @user.gender %></p>
+
+<% if @user.image.attached? %>
+<p><%= image_tag url_for(@user.image), class: "user-image" %></p>
+  <%#= image_tag @user.image.variant(resize_to_limit: [100, 100]) %>
+  <% else %>
+  <p><strong>You don't have any attached images.</strong></p>
+  <% end %>
+
+<% if @user.userdetail.present? %>
+  <h4>User details</h4>
+  <p>Address: <%= @user.userdetail.address %></p>
+<p>Is user married?: <%= @user.userdetail.is_married %></p>
+  <% else %>
+  <h4>No user detail added</h4>
+<% end %>
+<%= link_to "Add user details", new_user_userdetail_path(@user.id) %>

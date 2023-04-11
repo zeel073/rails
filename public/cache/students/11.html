@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Record</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="8mZdpeBEak4zGV_MgI2mFEBGZL3nNEJwnrWYd7SCU-hn3YGysv3gowjr83hWPCfcuW-YQ8-BaxW3DBKyZGY1og" />
+    
+
+    <link rel="stylesheet" href="/assets/application-e0cf9d8fcb18bf7f909d8d91a5e78499f82ac29523d475bf3a9ab265d5e2b451.css" data-turbo-track="reload" />
+  </head>
+
+  <body>
+<!--  <h1>Sidhu moosewala</h1>-->
+    <h1>Record</h1>
+<p>21</p>
+<p>Selmon bhai</p>
+<p>good driving hoye hoye</p>
+<p></p>
+<p><a href="/students/11/edit">Edit this record</a></p>
+<p><a data-turbo-method="delete" data-turbo-confirm="Really???" href="/students/11">Delete this record</a></p>
+<a href="/students/11/reviews/11/preview">Preview this record</a>
+<p><a href="/students">See all records</a></p>
+<h2>Reviews</h2>
+
+<p>Reviewer:katrina kaif</p>
+  <p>Review:2</p>
+<!--  <br>-->
+  <p><a data-turbo-method="delete" data-turbo-confirm="Sach me?" href="/students/11/reviews/34">delete review</a></p>
+  <p><a href="/students/11/reviews/34/edit">Edit review</a></p>
+  <br>
+<p>Reviewer:kkk</p>
+  <p>Review:9</p>
+<!--  <br>-->
+  <p><a data-turbo-method="delete" data-turbo-confirm="Sach me?" href="/students/11/reviews/37">delete review</a></p>
+  <p><a href="/students/11/reviews/37/edit">Edit review</a></p>
+  <br>
+
+    katrina kaif
+    kkk
+<form action="/students/11/reviews" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="Ea9Z74YqUOaj-NskBpBkR4959ZikbCjTiZAtHpKapJbzrsh1BsP9HI7AwF402hYHSkV3pDzidS3wjmDS1B5xZQ" autocomplete="off" />
+  <p><label for="review_reviewer">Reviewer</label>
+    <input type="text" name="review[reviewer]" id="review_reviewer" /></p>
+  <p><label for="review_review">Review</label>
+    <input type="text" name="review[review]" id="review_review" /></p>
+  <div>
+    <label for="review_status">Status</label>
+    <select name="review[status]" id="review_status"><option selected="selected" value="public">public</option>
+<option value="private">private</option>
+<option value="archived">archived</option></select>
+  </div>
+  <p><input type="submit" name="commit" value="Create Review" data-disable-with="Create Review" /></p>
+</form>
+
+  </body>
+</html>

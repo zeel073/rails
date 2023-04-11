@@ -1,0 +1,10 @@
+<h1>Create new user detail</h1>
+<%= form_with model: [@user, @user.build_userdetail] do |form| %>
+  <p><%= form.label :address %>
+    <%= form.text_field :address %></p>
+  <p>
+    <%= form.label :is_married %>
+    <%= form.select :is_married, ['yes','no'], selected: 'yes' %>
+  </p>
+  <p><%= form.submit %></p>
+<% end %>

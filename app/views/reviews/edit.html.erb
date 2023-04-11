@@ -1,0 +1,12 @@
+<h1>Edit review</h1>
+<%= form_with model: [@student , @review] do |form| %>
+  <p><%= form.label :reviewer %>
+    <%= form.text_field :reviewer %></p>
+  <p><%= form.label :review %>
+    <%= form.text_field :review %></p>
+  <div>
+    <%= form.label :status %>
+    <%= form.select :status, ['public','private','archived'], selected: 'public' %>
+  </div>
+  <p><%= form.submit %></p>
+<% end %>
