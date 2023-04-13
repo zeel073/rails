@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class UserdetailsController < ApplicationController
-  def index; end
+  def index
+  end
 
   def new
     @user = User.find(params[:user_id])
@@ -11,6 +12,7 @@ class UserdetailsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @userdetail = @user.build_userdetail(userdetail_params)
+    authorize! :manage, @user
     if @userdetail.save
       redirect_to user_path(@user.id)
     else

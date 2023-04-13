@@ -27,4 +27,5 @@ class Student < ApplicationRecord
       [:name, :remarks, :email]
     ]
   end
+
 end

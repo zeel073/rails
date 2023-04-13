@@ -7,9 +7,11 @@ class StudentPolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    current_new_user.admin?
   end
-
+  def show?
+    current_new_user.admin?
+  end
   def new?
     create?
   end
@@ -27,10 +29,6 @@ class StudentPolicy < ApplicationPolicy
   end
 
   def destroy?
-    current_new_user.admin?
-  end
-
-  def show?
     current_new_user.admin?
   end
 

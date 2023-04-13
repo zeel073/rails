@@ -2,11 +2,11 @@
 
 class ApplicationPolicy
   include Pundit::Authorization
-  attr_reader :new_user, :record
+  attr_reader :new_user, :student
 
-  def initialize(new_user, record)
+  def initialize(new_user, student)
     @user = new_user
-    @record = record
+    @student = student
   end
 
   def index?

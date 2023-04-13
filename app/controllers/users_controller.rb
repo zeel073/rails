@@ -1,14 +1,16 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  after_action :change_value, only: [:create]
+  # after_action :change_value, only: [:create]
   def index
     @counting = 1
     @user = User.all
+    # authorize! :read, @user
   end
 
   def show
     @user = User.find(params[:id])
+    # authorize! :read, @user
   end
 
   def new
@@ -17,6 +19,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    authorize! :manage, @user
     if @user.save
       redirect_to @user
     else
@@ -24,7 +27,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+
+  end
 
   private
 

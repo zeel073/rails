@@ -81,3 +81,6 @@ group :test do
 end
 
 gem "pundit", "~> 2.3"
+gem 'cancancan'
+gem 'will_paginate'
+gem "exception_notification"

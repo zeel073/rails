@@ -10,6 +10,9 @@ class ApplicationController < ActionController::Base
   def current_user
     current_new_user
   end
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to users_path, :alert => exception.message
+  end
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:username, :email, :password, :role) }
