@@ -2,6 +2,7 @@
 
 class Student < ApplicationRecord
   include Visible
+  extend FriendlyId
   has_many :reviews, dependent: :destroy
 
   def hello
@@ -16,4 +17,14 @@ class Student < ApplicationRecord
   scope :privatezeel, -> { where(status: 'private') }
   scope :publiczeel, -> { where(status: ['public', nil]) }
   scope :archivedzeel, -> { where(status: 'archived') }
+
+  friendly_id :slug_candidates, use: :slugged
+
+  def slug_candidates
+    [
+      :name,
+      [:name, :remarks],
+      [:name, :remarks, :email]
+    ]
+  end
 end
