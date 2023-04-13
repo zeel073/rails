@@ -6,11 +6,17 @@
     <%= f.label :username %><br />
     <%= f.text_field :username, autofocus: true %>
   </div>
+  <br>
+  <div>
+    <%= f.label :role %>
+    <%= f.select :role, ['admin', 'user'] %>
+  </div>
+  <br>
   <div class="field">
     <%= f.label :email %><br/>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
-
+  <br>
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
@@ -18,13 +24,13 @@
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
-
+  <br>
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-
+  <br>
 
   <div class="actions">
     <%= f.submit "Sign up" %>

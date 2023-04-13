@@ -35,6 +35,7 @@ gem 'jbuilder'
 gem 'actionpack-action_caching'
 gem 'actionpack-page_caching'
 gem 'devise'
+gem 'friendly_id', '~> 5.4.0'
 gem 'redis', '~> 4.0'
 gem 'redis-rails'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
@@ -78,3 +79,8 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+
+gem "pundit", "~> 2.3"
+gem 'cancancan'
+gem 'will_paginate'
+gem "exception_notification"

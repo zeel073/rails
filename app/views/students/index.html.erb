@@ -1,26 +1,92 @@
 <html>
 <head>
 <!--  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
+  <style>
+      .digg_pagination {
+          background: white;
+          cursor: default;
+          /* self-clearing method: */ }
+      .digg_pagination a, .digg_pagination span, .digg_pagination em {
+          padding: 0.2em 0.5em;
+          display: block;
+          float: left;
+          margin-right: 1px; }
+      .digg_pagination .disabled {
+          color: #999999;
+          border: 1px solid #dddddd; }
+      .digg_pagination .current {
+          font-style: normal;
+          font-weight: bold;
+          background: #2e6ab1;
+          color: white;
+          border: 1px solid #2e6ab1; }
+      .digg_pagination a {
+          text-decoration: none;
+          color: #105cb6;
+          border: 1px solid #9aafe5; }
+      .digg_pagination a:hover, .digg_pagination a:focus {
+          color: #000033;
+          border-color: #000033; }
+      .digg_pagination .page_info {
+          background: #2e6ab1;
+          color: white;
+          padding: 0.4em 0.6em;
+          width: 22em;
+          margin-bottom: 0.3em;
+          text-align: center; }
+      .digg_pagination .page_info b {
+          color: #000033;
+          background: #6aa6ed;
+          padding: 0.1em 0.25em; }
+      .digg_pagination:after {
+          content: ".";
+          display: block;
+          height: 0;
+          clear: both;
+          visibility: hidden; }
+      * html .digg_pagination {
+          height: 1%; }
+      *:first-child + html .digg_pagination {
+          overflow: hidden; }
+  </style>
 </head>
 <body>
+<% if new_user_signed_in? %>
+  Current User => <%= current_new_user.email %>
+<% end %>
 <h1>Student Records!</h1>
 <p>There are total <%= Student.public_count %> students and counting!!!</p>
 <%= Student.hello_method_concern %>
-<% @students.each do |t| %>
+
+<div style="display: flex; margin-bottom: 10px; margin-top: 5px ">
+<% @studentspaginate.each do |t| %>
   <% if t.archived? != true %>
     <div>
-      <p><%= link_to t.id, t %>. <%= link_to t.name, t %></p>
+      <button style="margin-left: 5px"><p> <%= link_to t.name, t %></p></button>
     </div>
+      <br>
   <% end %>
 <% end %>
+</div>
+
+<div class="digg_pagination">
+<!--  <div class="page_info">-->
+    <%#= page_entries_info @studentspaginate %>
+<!--  </div>-->
+  <%= will_paginate @studentspaginate%>
+</div>
+
+<br>
 <div>
-  <strong><a class="btn btn-primary" style="margin-left: 5px" <%= link_to "Create new record", new_student_path %></a></strong>
+  <% if  policy(Student).index? %>
+  <button><strong><a class="btn btn-primary" style="margin-left: 5px" <%= link_to "Create new record", new_student_path %></a></strong></button>
+  <% end %>
 </div>
 <p><%= link_to "My learnings", tutorial_learnings_path %></p>
 <%= link_to "Users", users_path %>
 
 <p>
-<%= helperyo(@students.find(1).name) %>
+<%#= helperyo(@students.find(1).name) %>
 </p>
 
 <%= content_for :abc do %>
@@ -37,11 +103,10 @@
   <%= image_tag "alcohol-taoscan.png", style: 'height: 100px; margin-left: 10px' %>
   <%= image_tag "aodh-img.png", style: 'height: 100px; margin-left: 10px' %>
 </div>
-<% if new_user_signed_in? %>
-<%= current_new_user.email %>
-<% end %>
+
 <p><button style="text-decoration: none"><%= link_to 'Edit Profile', edit_new_user_registration_path %></button></p>
 <h1><%= button_to 'Log out', destroy_new_user_session_path, method: :delete %></h1>
+
 </body>
 
 </html>

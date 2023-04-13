@@ -95,18 +95,27 @@ Rails.application.configure do
     port: 587,
     domain: 'gmail.com',
     user_name: 'zeel.essence@gmail.com',
-    password: 'bbgzhetuqglrdygt',
+    password: 'fdziyppixzjvupat',
     authentication: 'plain',
     enable_starttls_auto: true
   }
   config.public_file_server.enabled = true
-
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+                                          :email => {
+                                            :email_prefix => "[PREFIX] ",
+                                            :sender_address => %{"notifier" },
+                                            :exception_recipients => %w{zeelsakariya07@gmail.com}
+                                          }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
   # config.action_mailer.default_url_options = { host: "localhost:3000" }
   # config.action_mailer.default_url_options = { :host => "localhost:3000" }
 
   # routes.default_url_options[:host] = 'localhost:3000'
-  # Uncomment if you wish to allow Action Cable access from any origin.
+  # Uncomment if you wish to allow Action Cable access from any origin.ma
   # config.action_cable.disable_request_forgery_protection = true
   # config.action_mailer.delivery_method = :letter_opener
   # config.action_mailer.perform_deliveries = true
+  # Rails.application.config.middleware.use ExceptionNotification::Rack,
+
 end

@@ -16,11 +16,9 @@ m = Module.new do
   def invoked_as_script?
     File.expand_path($PROGRAM_NAME) == File.expand_path(__FILE__)
   end
-
   def env_var_version
     ENV['BUNDLER_VERSION']
   end
-
   def cli_arg_version
     return unless invoked_as_script? # don't want to hijack other binstubs
     return unless 'update'.start_with?(ARGV.first || ' ') # must be running `bundle update`

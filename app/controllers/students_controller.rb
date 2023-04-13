@@ -2,12 +2,13 @@
 
 class StudentsController < ApplicationController
   # http_basic_authenticate_with name: "zeel", password: "zeel073", only: [:index, :show]
-  after_action :send_mail, only: %i[create update]
+  # after_action :send_mail, only: %i[create update]
   # before_action :hello, only: [:new]
   # caches_page :index, :show, expires_in: 30.seconds
   # caches_action :new
   def index
     @students = Student.all
+    @studentspaginate = Student.paginate(:page => params[:page], :per_page => 10)
     p 11_111_111_111_116_725_378_236_594_578_934_038_659_048_483_957_489_007_934_573
     # @stud = Student.find_in_batches(batch_size: 5) do |student|
     #   p student
@@ -40,10 +41,12 @@ class StudentsController < ApplicationController
     #    p 909090909099090090909090
     #    p @first
     #     end
+
   end
 
   def show
-    @student = Student.find(params[:id])
+    @student = Student.friendly.find(params[:id])
+
     # cache_key = students_#{params[:id]}_#{params[:updated_at]}
     # @result = Rails.cache.fetch(cache_key) do
     #   Student.count
@@ -56,6 +59,7 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.new(student_params)
+    authorize @student
     if @student.save
       redirect_to @student
     else
@@ -64,11 +68,14 @@ class StudentsController < ApplicationController
   end
 
   def edit
-    @student = Student.find(params[:id])
+    p 11111111111
+    p params
+    @student = Student.friendly.find(params[:id])
   end
 
   def update
-    @student = Student.find(params[:id])
+    @student = Student.friendly.find(params[:id])
+    authorize @student
     if @student.update(student_params)
       redirect_to @student
     else
@@ -77,9 +84,10 @@ class StudentsController < ApplicationController
   end
 
   def destroy
-    Student.find(params[:id]).destroy!
-    # @student.destroy
-    redirect_to students_path, status: :see_other
+    @student = Student.find(params[:id])
+    authorize @student
+    @student.destroy
+    redirect_to root_path, status: :see_other
   end
 
   # before_action :print_after_action
