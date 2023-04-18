@@ -2,6 +2,7 @@
 
 require 'sidekiq/web'
 Rails.application.routes.draw do
+  resources :products
   devise_for :new_users
   root 'students#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -18,7 +19,11 @@ Rails.application.routes.draw do
   resources :users do
     resources :userdetails
   end
-
+  get '/card/new' => 'students#new_card', as: 'add_payment_method'
+  post '/card' => 'students#create_card', as: 'create_payment_method'
+  get '/success' => 'students#success', as: 'success'
+  post '/subscription' => 'students#subscribe', as: 'subscribe'
+  post 'checkout/create' => 'checkout#create', as: "checkout_create"
   # authenticate :student do
   # Sidekiq::Web.use Rack::Auth::Basic do |username, password|
   #   username == 'zeel' && password == 'patel'
