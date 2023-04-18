@@ -1,0 +1,39 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="row">
+<div class="col-md-12 mt-3 text-center">
+<h3>Now you need to choose your plan</h3>
+</div>
+</div>
+<!-- creating a form -->
+<%=form_tag subscribe_path, method: :post do %>
+  <div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4 text-center">
+  <div class="form-group">
+  <select class="form-control" name="plan_id">
+  <% @plans.each do |plan| %>
+    <option value="<%= plan.id %>"><%= plan.amount/100 %> $ <%= plan.nickname %></option>
+    <!-- we pass id chosen by custmer as a value  to use it for subscription -->
+<%end%>
+  </select>
+  </div>
+  </div>
+    <div class="col-md-4"></div>
+  </div>
+  <div class="row">
+  <div class="col-md-12 mt-2 text-center">
+    <div style="margin-bottom: 5px">
+      <%= text_field_tag :coupon_code, params[:coupon_code], placeholder: "Enter coupon code" %>
+      <%= submit_tag "Apply Coupon" %>
+    </div>
+  <%= submit_tag 'Save changes', class: "btn btn-primary" %>
+  </div>
+  </div>
+<% end %>
+</body>
+</html>

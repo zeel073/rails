@@ -1,0 +1,26 @@
+<html>
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body style="margin: 10px; padding: 0px">
+<p style="color: green"><%= notice %></p>
+
+<%= render @product %>
+<div>
+<%= button_to "Buy Product", checkout_create_path, params: {:product_id => @product.id }, remote: true, class: "btn btn-success"%>
+</div>
+<br>
+<hr>
+<div>
+  <p>
+  <%= link_to "Edit this product", edit_product_path(@product), class: "btn btn-primary" %>
+  </p>
+  <p>
+    <%= button_to "Destroy this product", @product, method: :delete, class: "btn btn-dark" %>
+  </p>
+  <%= link_to "Back to products", products_path, class: "btn btn-info" %>
+
+
+</div>
+</body>

@@ -84,10 +84,59 @@ class StudentsController < ApplicationController
   end
 
   def destroy
-    @student = Student.find(params[:id])
+    @student = Student.friendly.find(params[:id])
     authorize @student
     @student.destroy
     redirect_to root_path, status: :see_other
+  end
+
+  def new_card
+    respond_to do |format|
+      format.js
+    end
+  end
+  def create_card
+    respond_to do |format|
+      if current_new_user.StripeId.nil?
+        customer = Stripe::Customer.create({"email": current_new_user.email})
+        #here we are creating a stripe customer with the help of the Stripe library and pass as parameter email.
+        current_new_user.update(:StripeId => customer.id)
+        #we are updating current_user and giving to it stripe_id which is equal to id of customer on Stripe
+      end
+
+      card_token = params[:stripeToken]
+      #it's the stripeToken that we added in the hidden input
+      if card_token.nil?
+        format.html { redirect_to student_path, error: "Oops"}
+      end
+      #checking if a card was giving.
+
+      customer = Stripe::Customer.new current_new_user.StripeId
+      customer.source = card_token
+      #we're attaching the card to the stripe customer
+      customer.save
+
+      format.html { redirect_to success_path }
+    end
+  end
+  def success
+    @plans = Stripe::Plan.list.data
+    unless current_new_user.StripeId.present?
+      redirect_to root_path, :flash => {:error => 'Firstly you need to enter your card'}
+      return
+    end
+  end
+
+  def subscribe
+    customer = Stripe::Customer.new current_new_user.StripeId
+    #we define our customer
+    plan_id = params[:plan_id]
+    subscription = Stripe::Subscription.create({
+                                                 customer: customer,
+                                                 items: [{plan: plan_id}], })
+    #we are creating a new subscription with the plan_id we took from our form
+    subscription.save
+    redirect_to root_path
   end
 
   # before_action :print_after_action
@@ -114,4 +163,4 @@ class StudentsController < ApplicationController
   def hello
     p 'Helllloooooooooooooo'
   end
-end
+  end

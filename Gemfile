@@ -69,6 +69,7 @@ group :development do
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
   gem 'rubocop'
+  gem 'brakeman'
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
@@ -83,4 +84,8 @@ end
 gem "pundit", "~> 2.3"
 gem 'cancancan'
 gem 'will_paginate'
-gem "exception_notification"
+gem 'exception_notification'
+gem 'bullet'
+gem 'stripe-rails'
+gem 'jquery-rails'
+gem 'stripe'
