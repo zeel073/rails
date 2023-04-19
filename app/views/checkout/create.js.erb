@@ -1,4 +1,4 @@
-var stripe = Stripe("<%= Rails.application.credentials[:stripe][:development][:publishable_key] %>")
+let stripe = Stripe("<%= Rails.application.credentials[:stripe][:development][:publishable_key] %>")
 
 stripe.redirectToCheckout({
   sessionId: '<%= @session.id %>'

@@ -45,8 +45,8 @@ class StudentsController < ApplicationController
   end
 
   def show
+    flash[:alert] = "Product purchased successfully!"
     @student = Student.friendly.find(params[:id])
-
     # cache_key = students_#{params[:id]}_#{params[:updated_at]}
     # @result = Rails.cache.fetch(cache_key) do
     #   Student.count

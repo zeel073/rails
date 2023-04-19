@@ -4,12 +4,16 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body style="margin: 10px; padding: 0px">
-<p style="color: green"><%= notice %></p>
+<!--<p style="color: green"><%#= notice %></p>-->
+<!--<p style="color: green"><%#= alert %></p>-->
 
 <%= render @product %>
+<% @specific_product = Product.find(params[:id]) %>
+<% unless @specific_product.is_paid %>
 <div>
 <%= button_to "Buy Product", checkout_create_path, params: {:product_id => @product.id }, remote: true, class: "btn btn-success"%>
 </div>
+  <% end %>
 <br>
 <hr>
 <div>

@@ -16,9 +16,13 @@ class CheckoutController < ApplicationController
                      quantity: 1,
                    }],
       mode: 'payment',
+      metadata: {
+        product_id: @product.id,
+        # account_id: current_account.id
+      },
       allow_promotion_codes: true,
-      success_url: root_url,
-      cancel_url: products_url,
+      success_url: products_url,
+      cancel_url: product_url(id: @product.id),
     )
     # Stripe::Coupon.create({percent_off: 20, duration: 'once'})
     respond_to do |format|
