@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   get '/success' => 'students#success', as: 'success'
   post '/subscription' => 'students#subscribe', as: 'subscribe'
   post 'checkout/create' => 'checkout#create', as: "checkout_create"
+  # resources :webhooks, only: [:create]
+  post '/webhooks' => 'webhooks#create'
   # authenticate :student do
   # Sidekiq::Web.use Rack::Auth::Basic do |username, password|
   #   username == 'zeel' && password == 'patel'

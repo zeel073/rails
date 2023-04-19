@@ -13,6 +13,11 @@
 <%#= url_for(Product.first.product_image) %>
 <!--<p style="color: green"><%#= notice %></p>-->
 <h1>Products</h1>
+<% if flash[:alert] %>
+  <div id="alert">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
 
 <div class="m-4">
   <div class="row row-cols-3 row-cols-md-3 g-4">
@@ -20,6 +25,9 @@
       <div class="col">
         <div class="card">
           <% if product.product_image.attached? %>
+            <% if product.is_paid %>
+            <p style="color: green; display: flex; justify-content: center; align-items: center; padding-top: 10px; font-size: 30px">Purchased</p>
+              <% end %>
             <img src="<%= url_for(product.product_image) %>" class="card-img-top image-size" alt="...">
 <!--            <p><%#= image_tag url_for(product.product_image), class: "card-img-top image-size" %></p>-->
           <% else %>

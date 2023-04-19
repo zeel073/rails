@@ -147,7 +147,8 @@ Rails.application.configure do
   config.stripe.publishable_key = Rails.application.credentials.stripe[:development][:publishable_key]
   # config.action_mailer.default_url_options = { host: "localhost:3000" }
   # config.action_mailer.default_url_options = { :host => "localhost:3000" }
-
+  # config.hosts << "4ab8-103-81-93-37.ngrok-free.app"
+  config.hosts << "8b1a-2401-4900-1c80-58ed-5913-5a3b-4563-8a9e.ngrok-free.app"
   # routes.default_url_options[:host] = 'localhost:3000'
   # Uncomment if you wish to allow Action Cable access from any origin.ma
   # config.action_cable.disable_request_forgery_protection = true
