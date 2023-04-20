@@ -8459,3 +8459,412 @@ Processing by StudentsController#show as HTML
 Completed 401 Unauthorized in 12ms (Views: 0.4ms | ActiveRecord: 1.4ms | Allocations: 2437)
 
 
+Started GET "/" for ::1 at 2023-04-20 12:32:04 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StudentsController#index as HTML
+Completed 401 Unauthorized in 11ms (ActiveRecord: 0.0ms | Allocations: 5217)
+
+
+Started GET "/new_users/sign_in" for ::1 at 2023-04-20 12:32:05 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering new_users/sessions/new.html.erb within layouts/application
+  Rendered new_users/shared/_links.html.erb (Duration: 1.7ms | Allocations: 937)
+  Rendered new_users/sessions/new.html.erb within layouts/application (Duration: 10.6ms | Allocations: 4440)
+  Rendered layout layouts/application.html.erb (Duration: 71.1ms | Allocations: 35781)
+Completed 200 OK in 104ms (Views: 78.7ms | ActiveRecord: 7.0ms | Allocations: 58338)
+
+
+Started POST "/new_users/sign_in" for ::1 at 2023-04-20 12:32:22 +0530
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "new_user"=>{"email"=>"zeelsakariya07@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mNewUser Load (2.7ms)[0m  [1m[34mSELECT "new_users".* FROM "new_users" WHERE "new_users"."email" = $1 ORDER BY "new_users"."id" ASC LIMIT $2[0m  [["email", "zeelsakariya07@gmail.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 303 See Other in 227ms (ActiveRecord: 3.3ms | Allocations: 6772)
+
+
+Started GET "/" for ::1 at 2023-04-20 12:32:22 +0530
+Processing by StudentsController#index as HTML
+  [1m[36mNewUser Load (0.3ms)[0m  [1m[34mSELECT "new_users".* FROM "new_users" WHERE "new_users"."id" = $1 ORDER BY "new_users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering students/index.html.erb within layouts/application
+  [1m[36mStudent Count (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE "students"."status" IS NULL[0m
+  ↳ app/models/concerns/visible.rb:13:in `public_count'
+  [1m[36mStudent Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE "students"."status" = $1[0m  [["status", "public"]]
+  ↳ app/models/concerns/visible.rb:14:in `public_count'
+  [1m[36mStudent Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE "students"."status" = $1[0m  [["status", "private"]]
+  ↳ app/models/concerns/visible.rb:15:in `public_count'
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT "students".* FROM "students" LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/views/students/index.html.erb:72
+  [1m[36mStudent Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "students"[0m
+  ↳ app/views/students/index.html.erb:86
+  [1m[36mStudent Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE ("students"."status" = $1 OR "students"."status" IS NULL)[0m  [["status", "public"]]
+  ↳ app/views/students/index.html.erb:106
+  [1m[36mCACHE Student Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE "students"."status" = $1[0m  [["status", "private"]]
+  ↳ app/views/students/index.html.erb:106
+  Rendered students/index.html.erb within layouts/application (Duration: 35.2ms | Allocations: 26689)
+  Rendered layout layouts/application.html.erb (Duration: 39.0ms | Allocations: 30786)
+Completed 200 OK in 53ms (Views: 31.9ms | ActiveRecord: 8.6ms | Allocations: 37727)
+
+
+Started GET "/products" for ::1 at 2023-04-20 12:32:26 +0530
+Processing by ProductsController#index as HTML
+  [1m[36mNewUser Load (0.7ms)[0m  [1m[34mSELECT "new_users".* FROM "new_users" WHERE "new_users"."id" = $1 ORDER BY "new_users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:24
+  [1m[36mActiveStorage::Attachment Load (1.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 19], ["record_type", "Product"], ["name", "product_image"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:27
+  [1m[36mActiveStorage::Blob Load (1.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:31
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 16], ["record_type", "Product"], ["name", "product_image"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:27
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:31
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 18], ["record_type", "Product"], ["name", "product_image"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:27
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:31
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 17], ["record_type", "Product"], ["name", "product_image"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:27
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:31
+  Rendered products/index.html.erb within layouts/application (Duration: 115.4ms | Allocations: 73979)
+  Rendered layout layouts/application.html.erb (Duration: 119.3ms | Allocations: 78287)
+Completed 200 OK in 139ms (Views: 106.6ms | ActiveRecord: 15.1ms | Allocations: 83684)
+
+
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--15145bef39eb438b4dc34344d63229a629fcc60f/shirt1.jpg" for ::1 at 2023-04-20 12:32:26 +0530
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--97f8051e16a5daa6d5cb2e2921fb4997f1f8255c/perfume1.jpeg" for ::1 at 2023-04-20 12:32:26 +0530
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4076f54968ed2eca68fd8337eb5068d3494f5933/shoes1.jpeg" for ::1 at 2023-04-20 12:32:26 +0530
+Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4076f54968ed2eca68fd8337eb5068d3494f5933", "filename"=>"shoes1"}
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--15145bef39eb438b4dc34344d63229a629fcc60f", "filename"=>"shirt1"}
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--381a46c4287b5a1d3a5ed69593c030ff088b0c5b/aodh-img.png" for ::1 at 2023-04-20 12:32:26 +0530
+Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--97f8051e16a5daa6d5cb2e2921fb4997f1f8255c", "filename"=>"perfume1"}
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+[36m  Disk Storage (0.7ms) [0m[34mGenerated URL for file at key: 9ztrevrs35k8l454e0is6em6f5mg (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhPWHAwY21WMmNuTXpOV3M0YkRRMU5HVXdhWE0yWlcwMlpqVnRad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5Ob2IyVnpNUzVxY0dWbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHphRzlsY3pFdWFuQmxad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlVPaEZ6WlhKMmFXTmxYMjVoYldVNkNteHZZMkZzIiwiZXhwIjoiMjAyMy0wNC0yMFQwNzowNzoyNi40NTVaIiwicHVyIjoiYmxvYl9rZXkifX0=--1faf650e4eda15415edebcff0b7c9492afc5b53a/shoes1.jpeg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhPWHAwY21WMmNuTXpOV3M0YkRRMU5HVXdhWE0yWlcwMlpqVnRad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5Ob2IyVnpNUzVxY0dWbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHphRzlsY3pFdWFuQmxad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlVPaEZ6WlhKMmFXTmxYMjVoYldVNkNteHZZMkZzIiwiZXhwIjoiMjAyMy0wNC0yMFQwNzowNzoyNi40NTVaIiwicHVyIjoiYmxvYl9rZXkifX0=--1faf650e4eda15415edebcff0b7c9492afc5b53a/shoes1.jpeg
+Completed 302 Found in 11ms (ActiveRecord: 0.4ms | Allocations: 5493)
+
+
+Processing by ActiveStorage::Blobs::RedirectController#show as PNG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--381a46c4287b5a1d3a5ed69593c030ff088b0c5b", "filename"=>"aodh-img"}
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+[36m  Disk Storage (0.6ms) [0m[34mGenerated URL for file at key: jx22lgjo28i1gdoaiprume1x8gkt (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhhbmd5TW14bmFtOHlPR2t4WjJSdllXbHdjblZ0WlRGNE9HZHJkQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUTJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GdlpHZ3RhVzFuTG5CdVp5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZVzlrYUMxcGJXY3VjRzVuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJT2FXMWhaMlV2Y0c1bkJqc0dWRG9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjMtMDQtMjBUMDc6MDc6MjYuNDY3WiIsInB1ciI6ImJsb2Jfa2V5In19--284d433f497bc469ed920feb5b08e51c8d43d917/aodh-img.png)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhhbmd5TW14bmFtOHlPR2t4WjJSdllXbHdjblZ0WlRGNE9HZHJkQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUTJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GdlpHZ3RhVzFuTG5CdVp5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZVzlrYUMxcGJXY3VjRzVuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJT2FXMWhaMlV2Y0c1bkJqc0dWRG9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjMtMDQtMjBUMDc6MDc6MjYuNDY3WiIsInB1ciI6ImJsb2Jfa2V5In19--284d433f497bc469ed920feb5b08e51c8d43d917/aodh-img.png
+Completed 302 Found in 8ms (ActiveRecord: 0.4ms | Allocations: 1366)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhPWHAwY21WMmNuTXpOV3M0YkRRMU5HVXdhWE0yWlcwMlpqVnRad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5Ob2IyVnpNUzVxY0dWbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHphRzlsY3pFdWFuQmxad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlVPaEZ6WlhKMmFXTmxYMjVoYldVNkNteHZZMkZzIiwiZXhwIjoiMjAyMy0wNC0yMFQwNzowNzoyNi40NTVaIiwicHVyIjoiYmxvYl9rZXkifX0=--1faf650e4eda15415edebcff0b7c9492afc5b53a/shoes1.jpeg" for ::1 at 2023-04-20 12:32:26 +0530
+  [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+[36m  Disk Storage (0.6ms) [0m[34mGenerated URL for file at key: gajcj2c9k1sdgvktnx8pyonzn89v (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaMkZxWTJveVl6bHJNWE5rWjNacmRHNTRPSEI1YjI1NmJqZzVkZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUldsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5CbGNtWjFiV1V4TG1wd1pXY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM0JsY21aMWJXVXhMbXB3WldjR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkRvUmMyVnlkbWxqWlY5dVlXMWxPZ3BzYjJOaGJBPT0iLCJleHAiOiIyMDIzLTA0LTIwVDA3OjA3OjI2LjUwOVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--bd8e44971e2966bc1705d50878b4d4dcf68a3f79/perfume1.jpeg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaMkZxWTJveVl6bHJNWE5rWjNacmRHNTRPSEI1YjI1NmJqZzVkZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUldsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5CbGNtWjFiV1V4TG1wd1pXY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM0JsY21aMWJXVXhMbXB3WldjR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkRvUmMyVnlkbWxqWlY5dVlXMWxPZ3BzYjJOaGJBPT0iLCJleHAiOiIyMDIzLTA0LTIwVDA3OjA3OjI2LjUwOVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--bd8e44971e2966bc1705d50878b4d4dcf68a3f79/perfume1.jpeg
+Completed 302 Found in 62ms (ActiveRecord: 19.6ms | Allocations: 15302)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhhbmd5TW14bmFtOHlPR2t4WjJSdllXbHdjblZ0WlRGNE9HZHJkQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUTJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GdlpHZ3RhVzFuTG5CdVp5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZVzlrYUMxcGJXY3VjRzVuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJT2FXMWhaMlV2Y0c1bkJqc0dWRG9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjMtMDQtMjBUMDc6MDc6MjYuNDY3WiIsInB1ciI6ImJsb2Jfa2V5In19--284d433f497bc469ed920feb5b08e51c8d43d917/aodh-img.png" for ::1 at 2023-04-20 12:32:26 +0530
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"shoes1"}
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"aodh-img"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 289)
+
+
+Completed 200 OK in 13ms (ActiveRecord: 0.0ms | Allocations: 831)
+
+
+  [1m[36mActiveStorage::Blob Load (1.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+[36m  Disk Storage (0.5ms) [0m[34mGenerated URL for file at key: azkaqpemufukru4rku7joilodtp7 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhZWHByWVhGd1pXMTFablZyY25VMGNtdDFOMnB2YVd4dlpIUndOd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5Ob2FYSjBNUzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTm9hWEowTVM1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMy0wNC0yMFQwNzowNzoyNi41MzlaIiwicHVyIjoiYmxvYl9rZXkifX0=--4e1112a60eac19464055fc6400ff7515ae61a4d4/shirt1.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhZWHByWVhGd1pXMTFablZyY25VMGNtdDFOMnB2YVd4dlpIUndOd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5Ob2FYSjBNUzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTm9hWEowTVM1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMy0wNC0yMFQwNzowNzoyNi41MzlaIiwicHVyIjoiYmxvYl9rZXkifX0=--4e1112a60eac19464055fc6400ff7515ae61a4d4/shirt1.jpg
+Completed 302 Found in 95ms (ActiveRecord: 22.9ms | Allocations: 21146)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaMkZxWTJveVl6bHJNWE5rWjNacmRHNTRPSEI1YjI1NmJqZzVkZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUldsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5CbGNtWjFiV1V4TG1wd1pXY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM0JsY21aMWJXVXhMbXB3WldjR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkRvUmMyVnlkbWxqWlY5dVlXMWxPZ3BzYjJOaGJBPT0iLCJleHAiOiIyMDIzLTA0LTIwVDA3OjA3OjI2LjUwOVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--bd8e44971e2966bc1705d50878b4d4dcf68a3f79/perfume1.jpeg" for ::1 at 2023-04-20 12:32:26 +0530
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"perfume1"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms | Allocations: 183)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhZWHByWVhGd1pXMTFablZyY25VMGNtdDFOMnB2YVd4dlpIUndOd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5Ob2FYSjBNUzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTm9hWEowTVM1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMy0wNC0yMFQwNzowNzoyNi41MzlaIiwicHVyIjoiYmxvYl9rZXkifX0=--4e1112a60eac19464055fc6400ff7515ae61a4d4/shirt1.jpg" for ::1 at 2023-04-20 12:32:26 +0530
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"shirt1"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms | Allocations: 183)
+
+
+Started GET "/products/19" for ::1 at 2023-04-20 12:32:29 +0530
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mNewUser Load (1.6ms)[0m  [1m[34mSELECT "new_users".* FROM "new_users" WHERE "new_users"."id" = $1 ORDER BY "new_users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mProduct Load (1.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:68:in `set_product'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 2.5ms | Allocations: 216)
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/views/products/show.html.erb:11
+  Rendered products/show.html.erb within layouts/application (Duration: 34.6ms | Allocations: 4862)
+  Rendered layout layouts/application.html.erb (Duration: 44.9ms | Allocations: 9100)
+Completed 200 OK in 64ms (Views: 46.5ms | ActiveRecord: 3.1ms | Allocations: 11782)
+
+
+Started GET "/products/16" for ::1 at 2023-04-20 12:32:34 +0530
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mNewUser Load (0.8ms)[0m  [1m[34mSELECT "new_users".* FROM "new_users" WHERE "new_users"."id" = $1 ORDER BY "new_users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:68:in `set_product'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 0.5ms | Allocations: 19)
+  [1m[36mCACHE Product Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/views/products/show.html.erb:11
+  Rendered products/show.html.erb within layouts/application (Duration: 7.2ms | Allocations: 866)
+  Rendered layout layouts/application.html.erb (Duration: 23.3ms | Allocations: 5062)
+Completed 200 OK in 38ms (Views: 24.8ms | ActiveRecord: 2.0ms | Allocations: 7030)
+
+
+Started GET "/products/18" for ::1 at 2023-04-20 12:32:36 +0530
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"18"}
+  [1m[36mNewUser Load (0.7ms)[0m  [1m[34mSELECT "new_users".* FROM "new_users" WHERE "new_users"."id" = $1 ORDER BY "new_users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:68:in `set_product'
+  Rendering layout layouts/application.html.erb
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/_product.html.erb (Duration: 0.1ms | Allocations: 19)
+  [1m[36mCACHE Product Load (0.0ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/views/products/show.html.erb:11
+  Rendered products/show.html.erb within layouts/application (Duration: 2.0ms | Allocations: 866)
+  Rendered layout layouts/application.html.erb (Duration: 11.1ms | Allocations: 5062)
+Completed 200 OK in 24ms (Views: 11.9ms | ActiveRecord: 1.3ms | Allocations: 7013)
+
+
+Started GET "/products" for ::1 at 2023-04-20 12:32:40 +0530
+Processing by ProductsController#index as HTML
+  [1m[36mNewUser Load (1.1ms)[0m  [1m[34mSELECT "new_users".* FROM "new_users" WHERE "new_users"."id" = $1 ORDER BY "new_users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:24
+  [1m[36mActiveStorage::Attachment Load (1.9ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 19], ["record_type", "Product"], ["name", "product_image"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:27
+  [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:31
+  [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 16], ["record_type", "Product"], ["name", "product_image"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:27
+  [1m[36mActiveStorage::Blob Load (0.8ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:31
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 18], ["record_type", "Product"], ["name", "product_image"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:27
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:31
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 17], ["record_type", "Product"], ["name", "product_image"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:27
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:31
+  Rendered products/index.html.erb within layouts/application (Duration: 46.7ms | Allocations: 7872)
+  Rendered layout layouts/application.html.erb (Duration: 52.5ms | Allocations: 12138)
+Completed 200 OK in 63ms (Views: 45.5ms | ActiveRecord: 9.1ms | Allocations: 13645)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaMkZxWTJveVl6bHJNWE5rWjNacmRHNTRPSEI1YjI1NmJqZzVkZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUldsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5CbGNtWjFiV1V4TG1wd1pXY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM0JsY21aMWJXVXhMbXB3WldjR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkRvUmMyVnlkbWxqWlY5dVlXMWxPZ3BzYjJOaGJBPT0iLCJleHAiOiIyMDIzLTA0LTIwVDA3OjA3OjI2LjUwOVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--bd8e44971e2966bc1705d50878b4d4dcf68a3f79/perfume1.jpeg" for ::1 at 2023-04-20 12:32:41 +0530
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"perfume1"}
+Completed 304 Not Modified in 0ms (ActiveRecord: 0.0ms | Allocations: 172)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhZWHByWVhGd1pXMTFablZyY25VMGNtdDFOMnB2YVd4dlpIUndOd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5Ob2FYSjBNUzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTm9hWEowTVM1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMy0wNC0yMFQwNzowNzoyNi41MzlaIiwicHVyIjoiYmxvYl9rZXkifX0=--4e1112a60eac19464055fc6400ff7515ae61a4d4/shirt1.jpg" for ::1 at 2023-04-20 12:32:41 +0530
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"shirt1"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 172)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhhbmd5TW14bmFtOHlPR2t4WjJSdllXbHdjblZ0WlRGNE9HZHJkQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUTJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GdlpHZ3RhVzFuTG5CdVp5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZVzlrYUMxcGJXY3VjRzVuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJT2FXMWhaMlV2Y0c1bkJqc0dWRG9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjMtMDQtMjBUMDc6MDc6MjYuNDY3WiIsInB1ciI6ImJsb2Jfa2V5In19--284d433f497bc469ed920feb5b08e51c8d43d917/aodh-img.png" for ::1 at 2023-04-20 12:32:41 +0530
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"aodh-img"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 172)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhPWHAwY21WMmNuTXpOV3M0YkRRMU5HVXdhWE0yWlcwMlpqVnRad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5Ob2IyVnpNUzVxY0dWbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHphRzlsY3pFdWFuQmxad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlVPaEZ6WlhKMmFXTmxYMjVoYldVNkNteHZZMkZzIiwiZXhwIjoiMjAyMy0wNC0yMFQwNzowNzoyNi40NTVaIiwicHVyIjoiYmxvYl9rZXkifX0=--1faf650e4eda15415edebcff0b7c9492afc5b53a/shoes1.jpeg" for ::1 at 2023-04-20 12:32:41 +0530
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"shoes1"}
+Completed 304 Not Modified in 0ms (ActiveRecord: 0.0ms | Allocations: 172)
+
+
+Started GET "/products" for ::1 at 2023-04-20 12:32:44 +0530
+Processing by ProductsController#index as HTML
+  [1m[36mNewUser Load (1.0ms)[0m  [1m[34mSELECT "new_users".* FROM "new_users" WHERE "new_users"."id" = $1 ORDER BY "new_users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:24
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 19], ["record_type", "Product"], ["name", "product_image"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:27
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:31
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 16], ["record_type", "Product"], ["name", "product_image"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:27
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:31
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 18], ["record_type", "Product"], ["name", "product_image"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:27
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:31
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 17], ["record_type", "Product"], ["name", "product_image"], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:27
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/views/products/index.html.erb:31
+  Rendered products/index.html.erb within layouts/application (Duration: 38.8ms | Allocations: 7869)
+  Rendered layout layouts/application.html.erb (Duration: 45.8ms | Allocations: 12135)
+Completed 200 OK in 55ms (Views: 42.1ms | ActiveRecord: 6.0ms | Allocations: 13630)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaMkZxWTJveVl6bHJNWE5rWjNacmRHNTRPSEI1YjI1NmJqZzVkZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUldsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5CbGNtWjFiV1V4TG1wd1pXY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM0JsY21aMWJXVXhMbXB3WldjR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkRvUmMyVnlkbWxqWlY5dVlXMWxPZ3BzYjJOaGJBPT0iLCJleHAiOiIyMDIzLTA0LTIwVDA3OjA3OjI2LjUwOVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--bd8e44971e2966bc1705d50878b4d4dcf68a3f79/perfume1.jpeg" for ::1 at 2023-04-20 12:32:44 +0530
+Processing by ActiveStorage::DiskController#show as JPEG
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhZWHByWVhGd1pXMTFablZyY25VMGNtdDFOMnB2YVd4dlpIUndOd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5Ob2FYSjBNUzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTm9hWEowTVM1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMy0wNC0yMFQwNzowNzoyNi41MzlaIiwicHVyIjoiYmxvYl9rZXkifX0=--4e1112a60eac19464055fc6400ff7515ae61a4d4/shirt1.jpg" for ::1 at 2023-04-20 12:32:44 +0530
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"perfume1"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 174)
+
+
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"shirt1"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 172)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhPWHAwY21WMmNuTXpOV3M0YkRRMU5HVXdhWE0yWlcwMlpqVnRad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5Ob2IyVnpNUzVxY0dWbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHphRzlsY3pFdWFuQmxad1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlVPaEZ6WlhKMmFXTmxYMjVoYldVNkNteHZZMkZzIiwiZXhwIjoiMjAyMy0wNC0yMFQwNzowNzoyNi40NTVaIiwicHVyIjoiYmxvYl9rZXkifX0=--1faf650e4eda15415edebcff0b7c9492afc5b53a/shoes1.jpeg" for ::1 at 2023-04-20 12:32:44 +0530
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhhbmd5TW14bmFtOHlPR2t4WjJSdllXbHdjblZ0WlRGNE9HZHJkQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUTJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GdlpHZ3RhVzFuTG5CdVp5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25ZVzlrYUMxcGJXY3VjRzVuQmpzR1ZEb1JZMjl1ZEdWdWRGOTBlWEJsU1NJT2FXMWhaMlV2Y0c1bkJqc0dWRG9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjMtMDQtMjBUMDc6MDc6MjYuNDY3WiIsInB1ciI6ImJsb2Jfa2V5In19--284d433f497bc469ed920feb5b08e51c8d43d917/aodh-img.png" for ::1 at 2023-04-20 12:32:44 +0530
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"aodh-img"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 172)
+
+
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"shoes1"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 172)
+
+
+Started GET "/?page=2" for ::1 at 2023-04-20 12:33:05 +0530
+Processing by StudentsController#index as HTML
+  Parameters: {"page"=>"2"}
+  [1m[36mNewUser Load (1.2ms)[0m  [1m[34mSELECT "new_users".* FROM "new_users" WHERE "new_users"."id" = $1 ORDER BY "new_users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering students/index.html.erb within layouts/application
+  [1m[36mStudent Count (1.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE "students"."status" IS NULL[0m
+  ↳ app/models/concerns/visible.rb:13:in `public_count'
+  [1m[36mStudent Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE "students"."status" = $1[0m  [["status", "public"]]
+  ↳ app/models/concerns/visible.rb:14:in `public_count'
+  [1m[36mStudent Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE "students"."status" = $1[0m  [["status", "private"]]
+  ↳ app/models/concerns/visible.rb:15:in `public_count'
+  [1m[36mStudent Load (0.6ms)[0m  [1m[34mSELECT "students".* FROM "students" LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 10]]
+  ↳ app/views/students/index.html.erb:72
+  [1m[36mStudent Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE ("students"."status" = $1 OR "students"."status" IS NULL)[0m  [["status", "public"]]
+  ↳ app/views/students/index.html.erb:106
+  [1m[36mCACHE Student Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE "students"."status" = $1[0m  [["status", "private"]]
+  ↳ app/views/students/index.html.erb:106
+  Rendered students/index.html.erb within layouts/application (Duration: 30.6ms | Allocations: 7282)
+  Rendered layout layouts/application.html.erb (Duration: 37.7ms | Allocations: 11359)
+Completed 200 OK in 52ms (Views: 33.9ms | ActiveRecord: 6.8ms | Allocations: 12947)
+
+
+Started GET "/?page=1" for ::1 at 2023-04-20 12:33:06 +0530
+Processing by StudentsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mNewUser Load (0.4ms)[0m  [1m[34mSELECT "new_users".* FROM "new_users" WHERE "new_users"."id" = $1 ORDER BY "new_users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering students/index.html.erb within layouts/application
+  [1m[36mStudent Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE "students"."status" IS NULL[0m
+  ↳ app/models/concerns/visible.rb:13:in `public_count'
+  [1m[36mStudent Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE "students"."status" = $1[0m  [["status", "public"]]
+  ↳ app/models/concerns/visible.rb:14:in `public_count'
+  [1m[36mStudent Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE "students"."status" = $1[0m  [["status", "private"]]
+  ↳ app/models/concerns/visible.rb:15:in `public_count'
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/views/students/index.html.erb:72
+  [1m[36mStudent Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "students"[0m
+  ↳ app/views/students/index.html.erb:86
+  [1m[36mStudent Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE ("students"."status" = $1 OR "students"."status" IS NULL)[0m  [["status", "public"]]
+  ↳ app/views/students/index.html.erb:106
+  [1m[36mCACHE Student Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE "students"."status" = $1[0m  [["status", "private"]]
+  ↳ app/views/students/index.html.erb:106
+  Rendered students/index.html.erb within layouts/application (Duration: 17.4ms | Allocations: 7958)
+  Rendered layout layouts/application.html.erb (Duration: 21.2ms | Allocations: 12033)
+Completed 200 OK in 27ms (Views: 19.0ms | ActiveRecord: 3.2ms | Allocations: 13630)
+
+
+Started GET "/?page=2" for ::1 at 2023-04-20 12:33:08 +0530
+Processing by StudentsController#index as HTML
+  Parameters: {"page"=>"2"}
+  [1m[36mNewUser Load (0.7ms)[0m  [1m[34mSELECT "new_users".* FROM "new_users" WHERE "new_users"."id" = $1 ORDER BY "new_users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering students/index.html.erb within layouts/application
+  [1m[36mStudent Count (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE "students"."status" IS NULL[0m
+  ↳ app/models/concerns/visible.rb:13:in `public_count'
+  [1m[36mStudent Count (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE "students"."status" = $1[0m  [["status", "public"]]
+  ↳ app/models/concerns/visible.rb:14:in `public_count'
+  [1m[36mStudent Count (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE "students"."status" = $1[0m  [["status", "private"]]
+  ↳ app/models/concerns/visible.rb:15:in `public_count'
+  [1m[36mStudent Load (1.0ms)[0m  [1m[34mSELECT "students".* FROM "students" LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 10]]
+  ↳ app/views/students/index.html.erb:72
+  [1m[36mStudent Count (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE ("students"."status" = $1 OR "students"."status" IS NULL)[0m  [["status", "public"]]
+  ↳ app/views/students/index.html.erb:106
+  [1m[36mCACHE Student Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE "students"."status" = $1[0m  [["status", "private"]]
+  ↳ app/views/students/index.html.erb:106
+  Rendered students/index.html.erb within layouts/application (Duration: 47.1ms | Allocations: 7258)
+  Rendered layout layouts/application.html.erb (Duration: 59.9ms | Allocations: 11342)
+Completed 200 OK in 70ms (Views: 55.9ms | ActiveRecord: 6.2ms | Allocations: 12939)
+
+
+Started GET "/?page=1" for ::1 at 2023-04-20 12:33:08 +0530
+Processing by StudentsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mNewUser Load (0.8ms)[0m  [1m[34mSELECT "new_users".* FROM "new_users" WHERE "new_users"."id" = $1 ORDER BY "new_users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering students/index.html.erb within layouts/application
+  [1m[36mStudent Count (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE "students"."status" IS NULL[0m
+  ↳ app/models/concerns/visible.rb:13:in `public_count'
+  [1m[36mStudent Count (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE "students"."status" = $1[0m  [["status", "public"]]
+  ↳ app/models/concerns/visible.rb:14:in `public_count'
+  [1m[36mStudent Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE "students"."status" = $1[0m  [["status", "private"]]
+  ↳ app/models/concerns/visible.rb:15:in `public_count'
+  [1m[36mStudent Load (1.4ms)[0m  [1m[34mSELECT "students".* FROM "students" LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/views/students/index.html.erb:72
+  [1m[36mStudent Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "students"[0m
+  ↳ app/views/students/index.html.erb:86
+  [1m[36mStudent Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE ("students"."status" = $1 OR "students"."status" IS NULL)[0m  [["status", "public"]]
+  ↳ app/views/students/index.html.erb:106
+  [1m[36mCACHE Student Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "students" WHERE "students"."status" = $1[0m  [["status", "private"]]
+  ↳ app/views/students/index.html.erb:106
+  Rendered students/index.html.erb within layouts/application (Duration: 48.8ms | Allocations: 7953)
+  Rendered layout layouts/application.html.erb (Duration: 62.6ms | Allocations: 12023)
+Completed 200 OK in 75ms (Views: 57.9ms | ActiveRecord: 7.3ms | Allocations: 13608)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5343377061353176965)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5343377061353176965)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+Started GET "/?page=1" for ::1 at 2023-04-20 17:42:46 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StudentsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mNewUser Load (0.4ms)[0m  [1m[34mSELECT "new_users".* FROM "new_users" WHERE "new_users"."id" = $1 ORDER BY "new_users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 5.2ms | Allocations: 30146)
+
+
+  
+ArgumentError (The provided regular expression is using multiline anchors (^ or $), which may present a security risk. Did you mean to use \A and \z, or forgot to add the :multiline => true option?):
+  
+app/models/student.rb:16:in `<class:Student>'
+app/models/student.rb:3:in `<main>'
+app/controllers/students_controller.rb:10:in `index'

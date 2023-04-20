@@ -9,10 +9,11 @@ class Student < ApplicationRecord
     'hello delegate'
   end
 
-  validates :rollNo, presence: true, numericality: { only_integer: true }
+  # validates :rollNo, presence: true
+  validates :rollNo, numericality: { only_integer: true }
   validates :name, presence: true, length: { minimum: 2 }
   validates :remarks, presence: true, length: { minimum: 10 }
-  validates :email, presence: true
+  validates :email, presence: true, uniqueness: true, length: { minimum: 4, maximum: 254 }
 
   scope :privatezeel, -> { where(status: 'private') }
   scope :publiczeel, -> { where(status: ['public', nil]) }
