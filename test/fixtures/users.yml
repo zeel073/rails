@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mobile_number: 1
+  name: MyString
+  surname: MyString
+  male: false
+  female: false
+
+two:
+  mobile_number: 1
+  name: MyString
+  surname: MyString
+  male: false
+  female: false
