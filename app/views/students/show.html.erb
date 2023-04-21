@@ -6,9 +6,7 @@
 <% if policy(Student).show? %>
   <p><%= link_to "Edit this record", edit_student_path %></p>
   <p>
-    <%#= link_to "Delete xthis record", student_path(@student),
-                data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
-    <%= button_to 'Delete comment', student_path(@student),
+    <%= button_to 'Delete Student', student_path(@student),
                 method: :delete, data: {confirm: 'Are you sure?'} %>
   </p>
 <% end %>

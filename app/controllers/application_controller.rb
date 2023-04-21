@@ -23,4 +23,5 @@ class ApplicationController < ActionController::Base
         err_message = t "#{policy_name}.#{exception.query}", scope: 'pundit', default: :default
         render json: { message: err_message }, status: :unauthorized
   end
+  respond_to :html, :json
 end
